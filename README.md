@@ -14,11 +14,12 @@ These principles, guidelines and standards allow us to:
 ### Contributing
 - Can anyone who has access to the repository contribute?
 
-1. [Default Setup for Frontend](#setup-default)
-2. [NuxtJS Structure](#nuxtjs-structure)
-3. [Coding](#coding)
-4. [Formatting](#formatting)
-5. [Comments](#comments)
-7. [CSS](#css)
-8. [GIT](#git)
-9. [Accessibility](#accessibility)
+Table of Contents
+• [Default Setup for Frontend](#setup-default)
+• [NuxtJS Structure](#nuxtjs-structure)
+• [Coding](#coding)
+• [Formatting](#formatting)
+• [Comments](#comments)
+• [CSS](#css)
+• [GIT](#git)
+• [Accessibility](#accessibility)
