@@ -15,9 +15,10 @@ These principles, guidelines and standards allow us to:
 - Can anyone who has access to the repository contribute?
 
 Table of Contents
-• [Default Setup for Frontend](#setup-default)
-• [NuxtJS Structure](#nuxtjs-structure)
-• [Coding](#coding)
+
+1. [Default Setup for Frontend](#setup-default)
+2. [NuxtJS Structure](#nuxtjs-structure)
+3. [Coding](#coding)
 4. [Formatting](#formatting)
 5. [Comments](#comments)
 7. [CSS](#css)
