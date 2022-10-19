@@ -25,9 +25,8 @@ Table of Contents
 9. [Accessibility](#accessibility)
 
 
-#nuxtjs-structure
-# NuxtJS Structure/ Coding standards
 
+# NuxtJS Structure/ Coding standards #nuxtjs-structure
 # Folder structure
 
 For the most part we're using the default nuxt folder structure, there’s just a couple of places where it really differs from project to project, standard to standard: the components and the pages folders. 
