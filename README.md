@@ -17,15 +17,16 @@ These principles, guidelines and standards allow us to:
 Table of Contents
 1. [Default Setup for Frontend](#setup-default)
 2. [NuxtJS Structure](#nuxtjs-structure)
-3. [Coding](#coding)
-4. [Formatting](#formatting)
-5. [Comments](#comments)
-7. [CSS](#css)
-8. [GIT](#git)
-9. [Accessibility](#accessibility)
+3. [Coding standards](#coding-standards)
+4. [QAs Patterns](#qas-patterns)
+5. [CSS](#css)
+6. [GIT](#git)
+7. [Accessibility](#accessibility)
 
-# NuxtJS Structure/ Coding standards
+# NuxtJS Structure/ Coding 
 # Folder structure
+
+
 
 For the most part we're using the default nuxt folder structure, there’s just a couple of places where it really differs from project to project, standard to standard: the components and the pages folders. 
 
@@ -133,25 +134,34 @@ pages/
 |-about.vue
 ```
 
+#Coding standards #coding-standards
+
+### Handling dynamic routes
+For routes that have a value that is dynamic and can be basically anything, the best approach is to:
+- **If there is a parent to the dynamic route:** create a folder with the parent route name, then placing a index.vue and a ${dynamicRouteName}.vue files inside it
+```jsx
+pages/
+|-product/
+  |-index.vue
+  |-_id.vue
+|-user/
+  |-index.vue
+  |-_name.vue
+```
+- **If there isn't a parent to the dynamic route:** follow the choosen standard for the folder structure
+```jsx
+//If you are using the standard of creating a folder for each page
+pages/
+|-_slug/
+  |-index.vue
+
+//If you are using the standard of only creating a folder when it's necessary
+pages/
+|-_slug.vue
+```
+
 # Components standards <Component>
 
-### Use multi-worded component names
-
-Component names should always be multi-word to prevent conflicts with existing and future HTML elements
-
-```jsx
-//Don't
-export  default {
-    name: 'Todo',
-    // ...
-}
-
-//Do
- export  default {
-    name: 'TodoItem',
-    // ...
-}
-```
 
 ### All components and page files must be in PascalCase
 
@@ -240,10 +250,27 @@ components/
 |- SettingsCheckboxTerms.vue
 |- SettingsCheckboxLaunchOnStartup.vue
 ```
+### Use multi-worded component names
+
+Component names should always be multi-word to prevent conflicts with existing and future HTML elements
+
+```jsx
+//Don't
+export  default {
+    name: 'Todo',
+    // ...
+}
+
+//Do
+ export  default {
+    name: 'TodoItem',
+    // ...
+}
+```
 
 ### All components with no content should be self-closing
 
-Components that self-close communicate that they not only have no content, but they are meant to have no content
+Components that selfeu -close communicate that they not only have no content, but they are meant to have no content
 
 ```jsx
 //Don't
@@ -338,7 +365,7 @@ In JavaScript, splitting objects with multiple properties over multiple lines is
 
 ```jsx
 //Don't
-<img src="https://vuejs.org/images/logo.png" alt="Vue Logo">\
+<img src="https://vuejs.org/images/logo.png" alt="Vue Logo">
 <MyComponent foo="a" bar="b" baz="c"/>
 
 //Do
@@ -845,7 +872,13 @@ There are some standards for naming actions, mutations and getters on the VueX s
     this.$store.getters['requests/$all']
     this.$store.getters['requests/$byId', requestId]
     ```
-    
+#CSS   
+--> https://blog.logrocket.com/bem-vs-smacss-comparing-css-methodologies/
+https://www.devbridge.com/articles/implementing-clean-css-bem-method/
+https://medium.com/@GreenXIII/bem-vs-smacss-war-till-death-6e035b87d6c6
+https://getbem.com/introduction/
+https://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/
+#qas-patterns
 
 # Making the QAs job easier
 
