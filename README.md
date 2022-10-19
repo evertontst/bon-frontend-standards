@@ -24,9 +24,7 @@ Table of Contents
 8. [GIT](#git)
 9. [Accessibility](#accessibility)
 
-
-
-# NuxtJS Structure/ Coding standards #nuxtjs-structure
+# NuxtJS Structure/ Coding standards
 # Folder structure
 
 For the most part we're using the default nuxt folder structure, there’s just a couple of places where it really differs from project to project, standard to standard: the components and the pages folders. 
@@ -930,7 +928,127 @@ The frontend developers can make the QAs job of creating automated testing a lot
     <button class="btn__cancel">Cancel</button>
     ```
     
+# Accessibility Standards
 
+## Accessibility checker tool:
+
+[https://www.accessibilitychecker.org](https://www.accessibilitychecker.org/)/
+
+## Font size accessibility:
+
+- Set a main font size as variable, using `em` value.
+- Change the main font size value clicking on the encrease or decrease font size and using `rem` on all the others font sizes.
+
+## Contrast:
+
+- **Eg:** Switch the colors inside variables by re-setting the variables or changing the the css file.
+
+## ARIA:
+
+> **ARIA “Accessible Rich Internet Applications”: Readers and other tools to present and support interaction with objects in a way that is consistent with user expectations.**
+> 
+- Use ARIA roles. Eg: `role="button"` in a button tag.
+- A `description` or “`name`” should be added to any `input fields` such as a `check box`, `radio buttons`, `form fields`, etc. This way, a user can recognize it and can identify its purpose.
+- Add `required="true"` attributes to all mandatory fields.
+- Provide proper `roles` for parent elements.
+- Make sure that each focusable element on the page with an active `ID` has a unique value.
+- Add single and unique ARIA `labels` to each form field.
+- Add `alt` text to all meaningful images/graphics.
+- Add a `<caption>` inside the `<table>` tag with a description of the information contained in the table. The caption helps screen reader users identify the content of the data table. Data table rows and columns must also be defined. The relationship between `row/column` headers and table data must be highlighted.
+    - Use a `<table>` tag with its corresponding `<caption>` to provide a description about the information contained in the table.
+    - Provide an attribute `scope="col"` to each of the `<th>` tags which indicates column headers if the column header is not the first one.
+    - Provide an attribute `scope="row"` to each of the `<th>` tags which indicates row headers if the row header is not the first one.
+    - Best practice: use the `<thead>` and `<tbody>` tags to separate table headers and table content.
+    
+    When data tables are coded according to required standards, screen readers are able to navigate to each cell in all directions and read the cell content together with the associated table headers.
+    
+    **Best practice:** Use CSS instead of layout tables.
+    **Best practice:** While scope is not always required, it is recommended.
+    
+- Provide a valid value for `lang` attribute for respective languages on all web pages.
+- Captions make video elements usable for deaf or hearing-impaired users, providing critical information such as who is talking, what they're saying, and other non-speech information. So add at least one track element to the video element with the `kind='captions'` attribute, and at least one track element to the video element with attribute `kind='descriptions`'.
+- Ensure all frame and iframe elements have valid `title` attribute values.
+- Change the name of a landmark if it is used more than once to be sure each is unique. Use both HTML5 and ARIA landmarks to ensure all content is contained within a navigational region. In HTML5, you should use elements like `<header>`, `<nav>`, `<main>`, and `<footer>`. Their ARIA counterparts are `role="banner"`, `role="navigation"`, `role="main"`, and `role="contentinfo"`, in that order.
+- Maximum-scale on `<meta>` tag to disable zooming on mobile devices.
+- Construct a modal window which should be accessible. Focus should be trapped inside modal when it is open.
+    
+    **For details refer:** [https://www.w3.org/TR/wai-ARIA-practices/examples/dialog-modal/dialog.html](https://www.w3.org/TR/wai-ARIA-practices/examples/dialog-modal/dialog.html)
+    
+- Add Skip to main Content link (which will redirect main content page) on every web page which will redirect focus to main content.
+- Use ARIA-expanded state to mark expandable and collapsible regions.
+    
+    **Visit this link for the code:** [https://www.w3.org/WAI/GL/wiki/Using_the_WAI-ARIA_ARIA-expanded_state_to_mark_expandable_and_collapsible_regions](https://www.w3.org/WAI/GL/wiki/Using_the_WAI-ARIA_ARIA-expanded_state_to_mark_expandable_and_collapsible_regions)
+    
+- Tag the elements properly.
+    
+    **Visit this link for code:** [https://www.w3.org/WAI/tutorials/page-structure/content/](https://www.w3.org/WAI/tutorials/page-structure/content/)
+    
+- Use # and `id` attribute to shift focus of same page links to specified location.
+- Alert messages should be announced automatically by the screen reader. Session should not terminate automatically until user chooses to close it. ****
+    
+    **Visit this link for reference:** [https://www.digitala11y.com/understanding-sc-2-2-1-timing-adjustable/](https://www.digitala11y.com/understanding-sc-2-2-1-timing-adjustable/)
+    
+- Construct an accessible Play/Pause functionality.
+    
+    **For more detail refer:** [https://www.w3.org/WAI/WCAG21/Understanding/pause-stop-hide.html#examples](https://www.w3.org/WAI/WCAG21/Understanding/pause-stop-hide.html#examples)
+    
+- For decorative images, add attribute `alt=" "` or null to avoid unnecessary tab focus.
+- Use ARIA `selected` attribute for the currently active link.
+    
+    **Visit this link for the code:** [https://www.w3.org/TR/wai-aria/#aria-selected](https://www.w3.org/TR/wai-aria/#aria-selected)
+    
+- Tag the titles in heading(`h1, h2, h3, h4, h5, h6`) tags, and text in `p` tags.
+- Tag the quotes in quotation tag.
+    
+    **Visit this link for the code:** [https://www.w3.org/TR/wai-aria/#aria-selected](https://www.w3.org/TR/wai-aria/#aria-selected)
+    
+- Provide tooltip for icons
+    - Create a `<div>` element, give it a `role="tooltip"` and an `id="IDREF"`. Then, give it a brief description of the action.
+    - This element has to be accessible by focusing as well as hovering over. Both functionalities can be provided using CSS.
+    - The tooltip has to be visually hidden using CSS.
+    - Associate the tooltip with its button using ARIA-labelledby.
+    - After applying this keyboard-accessible tooltip, consider removing the title attribute from the element.
+        
+        **Refer to:** [https://inclusive-components.design/tooltips-toggletips/](https://inclusive-components.design/tooltips-toggletips/) and [https://a11yproject.com/posts/how-to-hide-content/](https://a11yproject.com/posts/how-to-hide-content/)
+        
+- Make the design responsive and Using `CSS media query` to adjust the size of page.
+- Avoid horizontal scroll bar from the web page.
+- Add an appropriate color border when elements get focus.
+    
+    **Visit this link for the code:** [https://www.deque.com/blog/accessible-focus-indicators/](https://www.deque.com/blog/accessible-focus-indicators/)
+    
+- Provide appropriate `tab indexing` so that focus does not move inside modal window.
+- Visible `label` should match with link label.
+- Construct an accessible video with transcript functionality.
+    
+    **For more detail refer:** [https://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv-audio-desc.html#media-equiv-audio-desc-examples-head](https://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv-audio-desc.html#media-equiv-audio-desc-examples-head)
+    
+- Using kind="captions" attribute provides synchronized captions with respect to each video.
+    
+    **For more detail refer:** [https://dequeuniversity.com/rules/axe/3.4/video-caption?application=AxeChrome](https://dequeuniversity.com/rules/axe/3.4/video-caption?application=AxeChrome)
+    
+- Use "ARIA-label" attribute to create an invisible text label for screen readers to read.
+- Information about that '*' symbol should be present in textual form. For eg. * means required field
+- Use ARIA `hidden = true` for unnecessery read elements like symbols(`'>'`) inside links or buttons.
+- User interactions must be announced by screen reader. Provide aria-live=""assertive"" or role=""alert"" and aria-atomic="true" for the changes that are made after hitting an element or a message popup. Eg: Error messages, Success message, Add to cart, Modals, Loading, etc…
+    
+    **Visit this link for the code:** [https://www.w3.org/TR/2016/NOTE-WCAG20-TECHS-20161007/ARIA19](https://www.w3.org/TR/2016/NOTE-WCAG20-TECHS-20161007/ARIA19)
+    
+- Current link active.
+    
+    **Visit this link for the code:** [https://www.digitala11y.com/ARIA-current-state/](https://www.digitala11y.com/ARIA-current-state/)
+    
+- Breadcrumbs, Provides a label that describes the type of navigation provided in the nav element.
+    - ARIA-label="Breadcrumb".
+    - ARIA-label="Breadcrumb".
+    - Applied to the last link in the set to indicate that it represents the current page.
+    - ARIA-current="page”
+- Input error Using javascript focus() method, keyboard/screen reader focus should automatically move to invalid edit field.
+- Provide the navigation links in `footer` section.
+- Tag the leaderboard content in table. [https://www.w3.org/TR/wai-ARIA-practices/examples/table/table.html](https://www.w3.org/TR/wai-ARIA-practices/examples/table/table.html)
+- Remove the blank div/ span from the code.
+- Disabled areas Add ARIA-disabled="true" to the <input /element>. This can also be achieved by using HTML5 "disabled" attribute. [https://www.w3.org/TR/wai-ARIA-1.1/#ARIA-disabled](https://www.w3.org/TR/wai-ARIA-1.1/#ARIA-disabled)
+    
 # References
 
 - [https://www.cataline.io/](https://www.cataline.io/)
