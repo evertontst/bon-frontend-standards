@@ -26,8 +26,6 @@ Table of Contents
 # NuxtJS Structure/ Coding 
 # Folder structure
 
-
-
 For the most part we're using the default nuxt folder structure, there’s just a couple of places where it really differs from project to project, standard to standard: the components and the pages folders. 
 
 For the components folder there are two widely adopted standards:
@@ -879,6 +877,140 @@ https://medium.com/@GreenXIII/bem-vs-smacss-war-till-death-6e035b87d6c6
 https://getbem.com/introduction/
 https://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/
 #qas-patterns
+
+# Git Structure / Standards
+
+## Issues
+
+### Title of the Issue
+The title should always briefly describe what is going to be worked on that Issue. Since the [Merge Request](##Creating-a-Merge-Request) and the branch are going to inherit its name, longer names could be problematic. Optionally, a prefix describing the type of task being performed on that Issue can be beneficial.
+
+#### The proposed formats for bug titles are:
+```jsx
+1. "person/type of user" can’t "perform action/get result they should be able to" (e.g. New User can’t view home screen)
+
+2. When "performing some action/event occurs", the "system feature" doesn’t work
+
+3. When "persona/type of user"  "performs some action", the "system feature" doesn’t work
+
+4. "quick name". "one of the formats above" (e.g. “Broken button. New User can’t click the Next button on Step 2 of the Wizard”).
+```
+
+#### For example
+```jsx
+✅ Do
+
+Title: [Fix] "Select All" should "select all CSWs" but doesn't
+
+🚫 Don't
+
+Title: THIS ISSUE RESOLVES ALL THE PROBLEMS FOR THE COMM PROGRAM
+Title: resolving all problems on comm program
+Title: select all not working
+Title: Implementing all the possible ways to interpret the different columns of users related to the list of users [...]
+```
+
+The Issue problematic should always be clear and concise to what is expected to be developed.
+```jsx
+✅ Do
+
+Description:
+	The "Select All" feature is not working as expected, instead of selecting all CSWs it is not selecting anything at all.
+	
+🚫 Don't
+
+Description:
+	Fix select all bug
+```
+
+Additionally, add a few elements to better organize the topics of the description:
+
+#### Example:
+## 🎯 Objectives
+- [x] Get the list of available users on the company
+- [ ] Update the design on the list of users
+
+## 🔗 API
+### Get list of Avaliable Users
+| API | TYPE | DESCRIPTION |
+| --- | --- | --- |
+| {{url}}/list-users | GET | Returns the list of the available Users |
+ 
+## 🖼️ Reference
+An Image that refers to the design of the discussed topic
+
+## Merge Requests
+
+>**Important:** If the 'dev' branch is not the default branch on the repository, when creating a new Merge Request with a branch, the Source should be set to 'dev' or any other branch that represents the dev environment
+
+The Merge Request should be created via the button "Create merge request" available on the Issue.  That will create a branch with the name of the functionality and further improving the way branches are merged into the same branch (dev). 
+
+**i.e.:** There's an issue to "Implement new design on Comm Program", the branch will automatically be: 149-implement-new-design-on-comm-program. And any work related to this implementation should be on this new branch.
+
+When creating, you can optionally assign yourself or the person who will work on that issue. You can also assign a Reviewer.
+
+Once the new feature has been implemented, you can "Mark as Ready". This will notify any Reviewer assigned to that Merge Request.
+
+## Commits
+Commit messages should sum what has been worked on in the commiting files. The commit message should contain the following:
+
+#### Commit message format
+```jsx
+<header>
+<BLANK LINE>
+<body> (Optional)
+<BLANK LINE>
+<footer> (Optional)
+```
+
+
+#### Commit message header 
+```jsx
+<type>(<scope>): <short summary>
+  │       │             │
+  │       │             └─→ Summary in present tense. Not capitalized. No period at the end.
+  │       │
+  │       └─→ Commit Scope: animations|bazel|benchpress|common|compiler|compiler-cli|core|
+  │                          elements|forms|http|language-service|localize|platform-browser|
+  │                          platform-browser-dynamic|platform-server|router|service-worker|
+  │                          upgrade|zone.js|packaging|changelog|docs-infra|migrations|ngcc|ve|
+  │                          devtools
+  │
+  └─→ Commit Type: build|ci|docs|feat|fix|perf|refactor|test
+
+```
+
+The type of the Commit Type can be replaced by an [gitmoji](https://gitmoji.dev/) that will represent that type of commit
+
+#### Commit message body (Optional)
+
+Just as in the summary, use the imperative, present tense: "fix" not "fixed" nor "fixes".
+
+Explain the motivation for the change in the commit message body. This commit message should explain  _why_  you are making the change. You can include a comparison of the previous behavior with the new behavior in order to illustrate the impact of the change.
+
+#### Commit message footer (Optional)
+> Since the Gitlab always refers to the Issue, this is very unnecessary
+
+The footer can contain information about breaking changes and deprecations and is also the place to reference GitHub issues, Jira tickets, and other PRs that this commit closes or is related to.
+
+#### Examples of Commit
+```
+📱: Fix main page responsivity
+<BLANK LINE>
+Fix the issue where the main page is not responsive to Tablet Views
+<BLANK LINE>
+<BLANK LINE>
+Fixes #149
+```
+Or
+```
+🚑️: Fix "Purchase" feature on Landing Page
+<BLANK LINE>
+Fix the issue the user can not finish the purchase because the "Purchase" button did not have a proper function working.
+<BLANK LINE>
+<BLANK LINE>
+Fixes #150
+```
 
 # Making the QAs job easier
 
